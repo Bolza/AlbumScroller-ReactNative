@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, ScrollView } from 'react-native';
+import { StyleSheet, ScrollView, Button, TouchableHighlight } from 'react-native';
 import axios from 'axios';
 
 import AlbumDetail from './album-detail.component';
@@ -23,7 +23,7 @@ class AlbumList extends Component {
             <AlbumDetail key={album.title} album={album} />
         );
     }
-    
+
     render() {
         return (
             <ScrollView style={styles.container}>
@@ -31,6 +31,7 @@ class AlbumList extends Component {
             </ScrollView>
         );
     }
+
 }
 
 const styles = StyleSheet.create({

@@ -1,10 +1,14 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, Button, TouchableOpacity, Linking } from 'react-native';
 
 import Card from './card.component';
 import CardSection from './card-section.component';
 
-const AlbumDetail = ({ album }) => { 
+const AlbumDetail = ({ album }) => {
+    const onButtonPress = () => {
+        Linking.openURL(album.url);
+    };
+
     return (
         <View>
             <Card>
@@ -25,6 +29,14 @@ const AlbumDetail = ({ album }) => {
                             style={styles.cover}
                             source={{ uri: album.image }} 
                         />
+                </CardSection>
+                 <CardSection >
+                    <TouchableOpacity style={styles.button}>
+                        <Button 
+                            onPress={onButtonPress}
+                            title="Buy Now"
+                        />
+                    </TouchableOpacity>
                 </CardSection>
             </Card>
        </View>
@@ -69,7 +81,18 @@ const styles = StyleSheet.create({
     },
 	textStyle: {
 		fontSize: 20,
-	} 
+	},
+    button: {
+        flex: 1,
+        alignSelf: 'stretch',
+        backgroundColor: '#fff',
+        borderRadius: 5,
+        borderWidth: 1,
+        borderColor: '#007aff',
+        marginLeft: 5,
+        marginRight: 5,
+    },
+
 });
 
 export default AlbumDetail;
